@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Persistence\Core.Persistence.csproj" />
+    <ProjectReference Include="..\Kodlama.io.Ders.Domain\Kodlama.io.Ders.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
