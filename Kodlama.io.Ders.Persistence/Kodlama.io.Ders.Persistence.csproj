@@ -7,6 +7,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Kodlama.io.Ders.Application\Kodlama.io.Ders.Application.csproj" />
     <ProjectReference Include="..\Kodlama.io.Ders.Domain\Kodlama.io.Ders.Domain.csproj" />
   </ItemGroup>
   
