@@ -11,7 +11,7 @@ namespace Kodlama.io.Devs.Persistence
     {
         public static IServiceCollection AddPersistenceService(this IServiceCollection services,IConfiguration configuration)
         {
-            services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("KodlamaIoDersConnectionString")));
+            services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("KodlamaIoDevsConnectionString")));
             services.AddScoped<IProgrammingLanguageRepository,ProgrammingLanguageRepository>();
 
             return services;

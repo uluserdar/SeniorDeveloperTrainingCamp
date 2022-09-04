@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using MediatR;
+using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Rules;
 
 namespace Kodlama.io.Devs.Application
 {
@@ -15,6 +16,8 @@ namespace Kodlama.io.Devs.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddScoped<ProgrammingLanguageBusinessRule>();
 
             return services;
         }

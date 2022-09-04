@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Kodlama.io.Devs.Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20220904184401_Init")]
+    [Migration("20220904201300_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

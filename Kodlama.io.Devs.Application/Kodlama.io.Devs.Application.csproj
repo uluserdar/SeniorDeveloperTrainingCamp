@@ -12,14 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\Core.Persistence\Core.Persistence.csproj" />
     <ProjectReference Include="..\Kodlama.io.Devs.Domain\Kodlama.io.Devs.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\ProgrammingLanguages\Constans\" />
     <Folder Include="Features\ProgrammingLanguages\Models\" />
-    <Folder Include="Features\ProgrammingLanguages\Rules\" />
     <Folder Include="Features\ProgrammingLanguages\Queries\" />
   </ItemGroup>
 
