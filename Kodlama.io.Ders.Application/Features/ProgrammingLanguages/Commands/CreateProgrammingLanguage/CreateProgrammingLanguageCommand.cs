@@ -30,7 +30,7 @@ namespace Kodlama.io.Ders.Application.Features.ProgrammingLanguages.Commands.Cre
             {
                 ProgrammingLanguage programmingLanguage=_mapper.Map<ProgrammingLanguage>(request);
                 ProgrammingLanguage createdProgrammingLanguage = await _programmingLanguageRepository.AddAsync(programmingLanguage);
-                CreateProgrammingLanguageDto createProgrammingLanguageDto=_mapper.Map<CreateProgrammingLanguageDto>(request);
+                CreateProgrammingLanguageDto createProgrammingLanguageDto=_mapper.Map<CreateProgrammingLanguageDto>(createdProgrammingLanguage);
                 return createProgrammingLanguageDto;
             }
         }
