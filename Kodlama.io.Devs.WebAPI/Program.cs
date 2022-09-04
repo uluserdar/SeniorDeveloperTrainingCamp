@@ -1,5 +1,6 @@
 using Kodlama.io.Devs.Application;
 using Kodlama.io.Devs.Persistence;
+using Core.CrossCuttingConcerns.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+if (app.Environment.IsProduction())
+    app.ConfigureCustomExceptionMiddleware();
 
 app.UseAuthorization();
 
