@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
@@ -21,17 +21,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.ElasticSearch", "Core.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Mailing", "Core.Mailing\Core.Mailing.csproj", "{6C370D43-4A6F-4FF6-B6F7-6DB8B7A2BE41}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kodlama.io.Ders", "kodlama.io.Ders", "{96375967-99BD-4AAD-B7BF-6D66C797C1EB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kodlama.io.Devs", "kodlama.io.Devs", "{96375967-99BD-4AAD-B7BF-6D66C797C1EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodlama.io.Ders.Application", "Kodlama.io.Ders.Application\Kodlama.io.Ders.Application.csproj", "{B4E84312-6771-4AAA-8DA3-B87ACC063253}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodlama.io.Devs.Application", "Kodlama.io.Devs.Application\Kodlama.io.Devs.Application.csproj", "{B4E84312-6771-4AAA-8DA3-B87ACC063253}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodlama.io.Ders.Domain", "Kodlama.io.Ders.Domain\Kodlama.io.Ders.Domain.csproj", "{32BB9DF9-FB71-4E1A-B579-D83D63D5BC53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodlama.io.Devs.Domain", "Kodlama.io.Devs.Domain\Kodlama.io.Devs.Domain.csproj", "{32BB9DF9-FB71-4E1A-B579-D83D63D5BC53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodlama.io.Ders.Infrastructure", "Kodlama.io.Ders.Infrastructure\Kodlama.io.Ders.Infrastructure.csproj", "{BEF8255A-8BF9-4AA4-834D-63D718BAC7CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodlama.io.Devs.Infrastructure", "Kodlama.io.Devs.Infrastructure\Kodlama.io.Devs.Infrastructure.csproj", "{BEF8255A-8BF9-4AA4-834D-63D718BAC7CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodlama.io.Ders.Persistence", "Kodlama.io.Ders.Persistence\Kodlama.io.Ders.Persistence.csproj", "{193FD171-C82E-42E7-9638-E85CFA66B169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodlama.io.Devs.Persistence", "Kodlama.io.Devs.Persistence\Kodlama.io.Devs.Persistence.csproj", "{193FD171-C82E-42E7-9638-E85CFA66B169}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodlama.io.Ders.WebAPI", "Kodlama.io.Ders.WebAPI\Kodlama.io.Ders.WebAPI.csproj", "{A025C1AD-E135-43C3-AAC0-E30E95E20F24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodlama.io.Devs.WebAPI", "Kodlama.io.Devs.WebAPI\Kodlama.io.Devs.WebAPI.csproj", "{A025C1AD-E135-43C3-AAC0-E30E95E20F24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
