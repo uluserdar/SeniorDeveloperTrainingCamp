@@ -25,5 +25,10 @@ namespace Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Rules
             IPaginate<ProgrammingLanguage> result = await _programmingLanguageRepository.GetListAsync(pl => pl.Name == name);
             if (result.Items.Any()) throw new BusinessException(Messages.ProgrammingLanguageNameExistsMessage);
         }
+
+        public void ProgrammingLanguageNameIsNotBeNullOrEmpty(string name)
+        {
+            if (string.IsNullOrEmpty(name)) throw new BusinessException(Messages.ProgrammingLanguageNameIsNotNullOrEmptyMessage);
+        }
     }
 }
