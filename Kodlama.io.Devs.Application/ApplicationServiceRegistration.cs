@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Rules;
+using FluentValidation;
+using Core.Application.Pipelines.Validation;
 
 namespace Kodlama.io.Devs.Application
 {
@@ -18,6 +20,9 @@ namespace Kodlama.io.Devs.Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddScoped<ProgrammingLanguageBusinessRule>();
+
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>),typeof(RequestValidationBehavior<,>));
 
             return services;
         }

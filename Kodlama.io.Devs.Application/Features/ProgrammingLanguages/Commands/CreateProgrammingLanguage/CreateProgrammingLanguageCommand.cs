@@ -31,7 +31,6 @@ namespace Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Commands.Cre
 
             public async Task<CreateProgrammingLanguageDto> Handle(CreateProgrammingLanguageCommand request, CancellationToken cancellationToken)
             {
-                _programmingLanguageBusinessRule.ProgrammingLanguageNameIsNotBeNullOrEmpty(request.Name);
                 await _programmingLanguageBusinessRule.ProgrammmingLanguageNameCanNotBeDublicatedWhenInserted(request.Name);
 
                 ProgrammingLanguage programmingLanguage=_mapper.Map<ProgrammingLanguage>(request);
