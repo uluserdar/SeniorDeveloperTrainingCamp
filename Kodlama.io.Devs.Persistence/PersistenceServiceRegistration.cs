@@ -9,10 +9,13 @@ namespace Kodlama.io.Devs.Persistence
 {
     public static class PersistenceServiceRegistration
     {
-        public static IServiceCollection AddPersistenceService(this IServiceCollection services,IConfiguration configuration)
+        public static IServiceCollection AddPersistenceService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("KodlamaIoDevsConnectionString")));
-            services.AddScoped<IProgrammingLanguageRepository,ProgrammingLanguageRepository>();
+            services.AddDbContext<BaseDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("KodlamaIoDevsConnectionString"));
+                });
+            services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
 
             return services;
         }

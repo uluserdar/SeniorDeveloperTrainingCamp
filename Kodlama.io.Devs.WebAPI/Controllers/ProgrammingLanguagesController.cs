@@ -1,4 +1,5 @@
 ﻿using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLanguage;
+using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Commands.UpdateProgrammingLanguage;
 using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,8 +13,15 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] CreateProgrammingLanguageCommand createProgrammingLanguageCommand)
         {
-            CreateProgrammingLanguageDto result = await Mediator.Send(createProgrammingLanguageCommand);
+            CreatedProgrammingLanguageDto result = await Mediator.Send(createProgrammingLanguageCommand);
             return Created("", result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateProgrammingLanguageCommand updateProgrammingLanguageCommand)
+        {
+            UpdatedProgrammingLanguageDto result = await Mediator.Send(updateProgrammingLanguageCommand);
+            return Ok(result);
         }
     }
 }

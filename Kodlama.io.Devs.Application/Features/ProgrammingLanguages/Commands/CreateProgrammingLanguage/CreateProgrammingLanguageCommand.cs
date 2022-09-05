@@ -12,11 +12,11 @@ using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Rules;
 
 namespace Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLanguage
 {
-    public class CreateProgrammingLanguageCommand:IRequest<CreateProgrammingLanguageDto>
+    public class CreateProgrammingLanguageCommand:IRequest<CreatedProgrammingLanguageDto>
     {
         public string Name { get; set; }
 
-        public class CreateProgrammingLanguageCommandHandler : IRequestHandler<CreateProgrammingLanguageCommand, CreateProgrammingLanguageDto>
+        public class CreateProgrammingLanguageCommandHandler : IRequestHandler<CreateProgrammingLanguageCommand, CreatedProgrammingLanguageDto>
         {
             private readonly IProgrammingLanguageRepository _programmingLanguageRepository;
             private readonly IMapper _mapper;
@@ -29,14 +29,14 @@ namespace Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Commands.Cre
                 _programmingLanguageBusinessRule = programmingLanguageBusinessRule;
             }
 
-            public async Task<CreateProgrammingLanguageDto> Handle(CreateProgrammingLanguageCommand request, CancellationToken cancellationToken)
+            public async Task<CreatedProgrammingLanguageDto> Handle(CreateProgrammingLanguageCommand request, CancellationToken cancellationToken)
             {
                 await _programmingLanguageBusinessRule.ProgrammmingLanguageNameCanNotBeDublicatedWhenInserted(request.Name);
 
                 ProgrammingLanguage programmingLanguage=_mapper.Map<ProgrammingLanguage>(request);
-                ProgrammingLanguage createdProgrammingLanguage = await _programmingLanguageRepository.AddAsync(programmingLanguage);
-                CreateProgrammingLanguageDto createProgrammingLanguageDto=_mapper.Map<CreateProgrammingLanguageDto>(createdProgrammingLanguage);
-                return createProgrammingLanguageDto;
+                ProgrammingLanguage mappedProgrammingLanguage = await _programmingLanguageRepository.AddAsync(programmingLanguage);
+                CreatedProgrammingLanguageDto createdProgrammingLanguageDto=_mapper.Map<CreatedProgrammingLanguageDto>(mappedProgrammingLanguage);
+                return createdProgrammingLanguageDto;
             }
         }
     }
