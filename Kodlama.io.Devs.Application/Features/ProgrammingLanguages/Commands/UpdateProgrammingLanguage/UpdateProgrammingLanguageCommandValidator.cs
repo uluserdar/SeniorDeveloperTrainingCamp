@@ -11,6 +11,9 @@ namespace Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Commands.Upd
     {
         public UpdateProgrammingLanguageCommandValidator()
         {
+            RuleFor(pl => pl.Id).NotEmpty();
+            RuleFor(pl => pl.Id).NotNull();
+            RuleFor(pl => pl.Id).GreaterThan(0);
             RuleFor(pl => pl.Name).NotEmpty();
             RuleFor(pl => pl.Name).MaximumLength(20);
         }
