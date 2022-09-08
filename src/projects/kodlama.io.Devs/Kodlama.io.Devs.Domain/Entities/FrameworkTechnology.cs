@@ -10,15 +10,15 @@ namespace Kodlama.io.Devs.Domain.Entities
     public class FrameworkTechnology:Entity
     {
         public ProgrammingLanguage? ProgrammingLanguage { get; set; }
-        public int ProgrammigLanguageId { get; set; }
+        public int ProgrammingLanguageId { get; set; }
         public string Name { get; set; }
 
         public FrameworkTechnology() { }
 
-        public FrameworkTechnology(int id,int programmigLanguageId, string name):this()
+        public FrameworkTechnology(int id,int programmingLanguageId, string name):this()
         {
             Id = id;
-            ProgrammigLanguageId = programmigLanguageId;
+            ProgrammingLanguageId = programmingLanguageId;
             Name = name;
         }
     }
