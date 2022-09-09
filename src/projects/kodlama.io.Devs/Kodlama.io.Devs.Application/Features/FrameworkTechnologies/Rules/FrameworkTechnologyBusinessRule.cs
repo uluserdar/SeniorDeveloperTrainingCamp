@@ -28,7 +28,7 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Rules
 
         public async Task FrameworkTechnologyShouldExistsWhenRequested(int id)
         {
-            var result = await _frameworkTechnologyRepository.GetAsync(pl => pl.Id == id);
+            var result = await _frameworkTechnologyRepository.GetAsync(predicate: pl => pl.Id == id,enableTracking:false);
             if (result == null) throw new BusinessException(FrameworkTechnologyMessages.FrameworkTechnologyShouldExistsWhenRequestMessage);
         }
     }

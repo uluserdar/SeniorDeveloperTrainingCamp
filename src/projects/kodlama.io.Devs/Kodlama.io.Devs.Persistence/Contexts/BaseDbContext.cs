@@ -13,7 +13,6 @@ namespace Kodlama.io.Devs.Persistence.Contexts
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
             Configuration = configuration;
-            this.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTrackingWithIdentityResolution;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
