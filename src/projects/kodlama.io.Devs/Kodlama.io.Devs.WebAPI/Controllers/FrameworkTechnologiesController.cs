@@ -1,4 +1,5 @@
 ﻿using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.CreateFrameworkTechnology;
+using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.DeleteFrameworkTechnology;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.UpdateFrameworkTechnology;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Dtos;
 using Microsoft.AspNetCore.Http;
@@ -21,6 +22,13 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         public async Task<IActionResult> Update([FromBody] UpdateFrameworkTechnologyCommand updateFrameworkTechnologyCommand)
         {
             UpdatedFrameworkTechnologyDto result = await Mediator.Send(updateFrameworkTechnologyCommand);
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] DeleteFrameworkTechnologyCommand deleteFrameworkTechnologyCommand)
+        {
+            DeletedFrameworkTechnologyDto result = await Mediator.Send(deleteFrameworkTechnologyCommand);
             return Ok(result);
         }
     }
