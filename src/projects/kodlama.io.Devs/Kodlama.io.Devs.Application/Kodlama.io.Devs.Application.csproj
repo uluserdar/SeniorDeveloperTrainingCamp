@@ -16,4 +16,12 @@
     <ProjectReference Include="..\Kodlama.io.Devs.Domain\Kodlama.io.Devs.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\FrameworkTechnologies\Constants\" />
+    <Folder Include="Features\FrameworkTechnologies\Models\" />
+    <Folder Include="Features\FrameworkTechnologies\Rules\" />
+    <Folder Include="Features\FrameworkTechnologies\Queries\" />
+    <Folder Include="Features\FrameworkTechnologies\Profiles\" />
+  </ItemGroup>
+
 </Project>
