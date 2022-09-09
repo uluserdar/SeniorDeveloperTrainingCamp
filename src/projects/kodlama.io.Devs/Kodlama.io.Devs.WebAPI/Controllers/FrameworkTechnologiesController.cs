@@ -2,6 +2,7 @@
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.DeleteFrameworkTechnology;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.UpdateFrameworkTechnology;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Dtos;
+using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.GetListByIdFrameworkTechnology;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,5 +32,6 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
             DeletedFrameworkTechnologyDto result = await Mediator.Send(deleteFrameworkTechnologyCommand);
             return Ok(result);
         }
+
     }
 }

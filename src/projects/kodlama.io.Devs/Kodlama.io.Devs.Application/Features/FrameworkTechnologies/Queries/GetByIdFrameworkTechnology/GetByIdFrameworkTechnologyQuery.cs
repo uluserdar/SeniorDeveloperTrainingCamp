@@ -10,13 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.GetListByIdFrameworkTechnology
+namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.GetByIdFrameworkTechnology
 {
-    public class GetListByIdFrameworkTechnologyQuery:IRequest<FrameworkTechnologyGetByIdDto>
+    public class GetByIdFrameworkTechnologyQuery:IRequest<FrameworkTechnologyGetByIdDto>
     {
         public int Id { get; set; }
 
-        public class GetListByIdFrameworkTechnologyQueryHandler : IRequestHandler<GetListByIdFrameworkTechnologyQuery, FrameworkTechnologyGetByIdDto>
+        public class GetListByIdFrameworkTechnologyQueryHandler : IRequestHandler<GetByIdFrameworkTechnologyQuery, FrameworkTechnologyGetByIdDto>
         {
             private readonly IMapper _mapper;
             private readonly IFrameworkTechnologyRepository _frameworkTechnologyRepository;
@@ -29,7 +29,7 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.Get
                 _frameworkTechnologyBusinessRule = frameworkTechnologyBusinessRule;
             }
 
-            public async Task<FrameworkTechnologyGetByIdDto> Handle(GetListByIdFrameworkTechnologyQuery request, CancellationToken cancellationToken)
+            public async Task<FrameworkTechnologyGetByIdDto> Handle(GetByIdFrameworkTechnologyQuery request, CancellationToken cancellationToken)
             {
                 await _frameworkTechnologyBusinessRule.FrameworkTechnologyShouldExistsWhenRequested(request.Id);
                 FrameworkTechnology frameworkTechnology = await _frameworkTechnologyRepository.GetAsync(x => x.Id == request.Id);
