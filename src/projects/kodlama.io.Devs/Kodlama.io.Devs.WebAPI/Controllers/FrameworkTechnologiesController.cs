@@ -38,7 +38,7 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{Id")]
+        [HttpGet("{Id}")]
         public async Task<IActionResult> GetById([FromRoute] GetByIdFrameworkTechnologyQuery getByIdFrameworkTechnologyQuery)
         {
             FrameworkTechnologyGetByIdDto frameworkTechnologyGetByIdDto = await Mediator.Send(getByIdFrameworkTechnologyQuery);
