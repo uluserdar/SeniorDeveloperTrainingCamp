@@ -11,6 +11,7 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Profiles
             CreateMap<FrameworkTechnology, CreatedFrameworkTechnologyDto>().ReverseMap();
             CreateMap<FrameworkTechnology, UpdatedFrameworkTechnologyDto>().ReverseMap();
             CreateMap<FrameworkTechnology, DeletedFrameworkTechnologyDto>().ReverseMap();
+            CreateMap<FrameworkTechnology,FrameworkTechnologyListDto>().ForMember(x=> x.ProgrammingLanguageName,opt=> opt.MapFrom(x=> x.ProgrammingLanguage.Name)).ForMember(x=> x.FrameworkTechnologyName,opt=> opt.MapFrom(x=> x.Name)).ReverseMap();
         }
     }
 }
