@@ -21,15 +21,20 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.Up
         {
             private readonly IMapper _mapper;
             private readonly IFrameworkTechnologyRepository _frameworkTechnologyRepository;
+            private readonly FrameworkTechnologyBusinessRule _frameworkTechnologyBusinessRule;
 
-            public UpdateFrameworkTechnologyCommandHandler(IMapper mapper, IFrameworkTechnologyRepository frameworkTechnologyRepository)
+            public UpdateFrameworkTechnologyCommandHandler(IMapper mapper, IFrameworkTechnologyRepository frameworkTechnologyRepository, FrameworkTechnologyBusinessRule frameworkTechnologyBusinessRule)
             {
                 _mapper = mapper;
                 _frameworkTechnologyRepository = frameworkTechnologyRepository;
+                _frameworkTechnologyBusinessRule = frameworkTechnologyBusinessRule;
             }
 
             public async Task<UpdatedFrameworkTechnologyDto> Handle(UpdateFrameworkTechnologyCommand request, CancellationToken cancellationToken)
             {
+                await _frameworkTechnologyBusinessRule.FrameworkTechnologyShouldExistsWhenRequested(request.Id);
+                await _frameworkTechnologyBusinessRule.FrameworkTechnologyNameCanNotBeDublicatedWhenUpdated(request.Id, request.Name);
+                
                 FrameworkTechnology mappedFrameworkTechnology = _mapper.Map<FrameworkTechnology>(request);
                 FrameworkTechnology updatedFrameworkTechnology =await _frameworkTechnologyRepository.UpdateAsync(mappedFrameworkTechnology);
                 UpdatedFrameworkTechnologyDto updatedFrameworkTechnologyDto=_mapper.Map<UpdatedFrameworkTechnologyDto>(updatedFrameworkTechnology);
