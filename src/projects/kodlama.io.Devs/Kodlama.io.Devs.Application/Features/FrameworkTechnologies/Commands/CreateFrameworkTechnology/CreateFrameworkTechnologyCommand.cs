@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Dtos;
+using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Rules;
 using Kodlama.io.Devs.Application.Services.Repositories;
 using Kodlama.io.Devs.Domain.Entities;
 using MediatR;
@@ -19,6 +20,7 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.Cr
         {
             private readonly IMapper _mapper;
             private readonly IFrameworkTechnologyRepository _frameworkTechnologyRepository;
+            private readonly FrameworkTechnologyBusinessRule _frameworkTechnologyBusinessRule;
 
             public CreateFrameworkTechnologyCommandHandler(IMapper mapper, IFrameworkTechnologyRepository frameworkTechnologyRepository)
             {
@@ -28,6 +30,8 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.Cr
 
             public async Task<CreatedFrameworkTechnologyDto> Handle(CreateFrameworkTechnologyCommand request, CancellationToken cancellationToken)
             {
+                await _frameworkTechnologyBusinessRule.FrameworkTechnologyNameCanNotBeDublicatedWhenInserted(request.Name);
+
                 FrameworkTechnology mappedFrameworkTechnology = _mapper.Map<FrameworkTechnology>(request);
                 FrameworkTechnology createdFrameworkTechnology = await _frameworkTechnologyRepository.AddAsync(mappedFrameworkTechnology);
                 CreatedFrameworkTechnologyDto createdFrameworkTechnologyDto=_mapper.Map<CreatedFrameworkTechnologyDto>(createdFrameworkTechnology);
