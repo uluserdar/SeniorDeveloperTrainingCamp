@@ -8,7 +8,6 @@ using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Models;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.GetByIdFrameworkTechnology;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.GetListByDynamicFrameworkTechnology;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.GetListFrameworkTechnology;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kodlama.io.Devs.WebAPI.Controllers
