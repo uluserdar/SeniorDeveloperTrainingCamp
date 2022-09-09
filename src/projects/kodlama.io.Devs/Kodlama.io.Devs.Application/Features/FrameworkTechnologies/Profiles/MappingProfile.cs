@@ -9,6 +9,7 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Profiles
         public MappingProfile()
         {
             CreateMap<FrameworkTechnology, CreatedFrameworkTechnologyDto>().ReverseMap();
+            CreateMap<FrameworkTechnology, UpdatedFrameworkTechnologyDto>().ReverseMap();
         }
     }
 }
