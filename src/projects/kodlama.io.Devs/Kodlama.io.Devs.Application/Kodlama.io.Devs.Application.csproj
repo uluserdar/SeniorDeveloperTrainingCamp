@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\FrameworkTechnologies\Models\" />
     <Folder Include="Features\FrameworkTechnologies\Queries\" />
     <Folder Include="Features\FrameworkTechnologies\Profiles\" />
   </ItemGroup>
