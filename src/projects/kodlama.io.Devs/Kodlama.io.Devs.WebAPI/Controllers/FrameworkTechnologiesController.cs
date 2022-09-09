@@ -1,4 +1,5 @@
 ﻿using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.CreateFrameworkTechnology;
+using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.UpdateFrameworkTechnology;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,13 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         {
             CreatedFrameworkTechnologyDto result = await Mediator.Send(createFrameworkTechnologyCommand);
             return Created("", result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] UpdateFrameworkTechnologyCommand updateFrameworkTechnologyCommand)
+        {
+            UpdatedFrameworkTechnologyDto result = await Mediator.Send(updateFrameworkTechnologyCommand);
+            return Ok(result);
         }
     }
 }
