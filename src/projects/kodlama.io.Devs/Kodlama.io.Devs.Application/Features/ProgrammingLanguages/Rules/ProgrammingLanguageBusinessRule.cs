@@ -18,19 +18,19 @@ namespace Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Rules
         public async Task ProgrammmingLanguageNameCanNotBeDublicatedWhenInserted(string name)
         {
             IPaginate<ProgrammingLanguage> result = await _programmingLanguageRepository.GetListAsync(pl => pl.Name == name);
-            if (result.Items.Any()) throw new BusinessException(Messages.ProgrammingLanguageNameExistsMessage);
+            if (result.Items.Any()) throw new BusinessException(ProgrammingLanguageMessages.ProgrammingLanguageNameExistsMessage);
         }
 
         public async Task ProgrammmingLanguageNameCanNotBeDublicatedWhenUpdated(int id,string name)
         {
             IPaginate<ProgrammingLanguage> result = await _programmingLanguageRepository.GetListAsync(pl => pl.Name == name && pl.Id!=id);
-            if (result.Items.Any()) throw new BusinessException(Messages.ProgrammingLanguageNameExistsMessage);
+            if (result.Items.Any()) throw new BusinessException(ProgrammingLanguageMessages.ProgrammingLanguageNameExistsMessage);
         }
 
         public async Task ProgrammingLanguageShouldExistsWhenRequested(int id)
         {
             var result = await _programmingLanguageRepository.GetAsync(pl => pl.Id == id);
-            if (result == null) throw new BusinessException(Messages.ProgrammingLanguageShouldExistsWhenRequestMessage);
+            if (result == null) throw new BusinessException(ProgrammingLanguageMessages.ProgrammingLanguageShouldExistsWhenRequestMessage);
         }
     }
 }
