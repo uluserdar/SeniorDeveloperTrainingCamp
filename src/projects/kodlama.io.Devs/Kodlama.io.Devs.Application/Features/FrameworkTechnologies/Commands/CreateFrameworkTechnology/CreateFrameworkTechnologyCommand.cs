@@ -9,6 +9,7 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.Cr
 {
     public class CreateFrameworkTechnologyCommand : IRequest<CreatedFrameworkTechnologyDto>
     {
+        public int ProgrammingLanguageId { get; set; }
         public string Name { get; set; }
 
         public class CreateFrameworkTechnologyCommandHandler : IRequestHandler<CreateFrameworkTechnologyCommand, CreatedFrameworkTechnologyDto>

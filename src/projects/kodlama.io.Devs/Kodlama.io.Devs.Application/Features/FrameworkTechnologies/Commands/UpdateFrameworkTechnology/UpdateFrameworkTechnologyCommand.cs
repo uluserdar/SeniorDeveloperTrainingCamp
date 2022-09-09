@@ -10,6 +10,7 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.Up
     public class UpdateFrameworkTechnologyCommand : IRequest<UpdatedFrameworkTechnologyDto>
     {
         public int Id { get; set; }
+        public int ProgrammingLanguageId { get; set; }
         public string Name { get; set; }
 
         public class UpdateFrameworkTechnologyCommandHandler : IRequestHandler<UpdateFrameworkTechnologyCommand, UpdatedFrameworkTechnologyDto>
