@@ -2,7 +2,7 @@
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.DeleteFrameworkTechnology;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.UpdateFrameworkTechnology;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Dtos;
-using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.GetListByIdFrameworkTechnology;
+using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.GetByIdFrameworkTechnology;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
