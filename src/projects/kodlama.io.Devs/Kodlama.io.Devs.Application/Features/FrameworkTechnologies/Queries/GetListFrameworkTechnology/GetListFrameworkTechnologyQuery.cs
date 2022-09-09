@@ -5,6 +5,7 @@ using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Models;
 using Kodlama.io.Devs.Application.Services.Repositories;
 using Kodlama.io.Devs.Domain.Entities;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,10 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.Get
 
             public async Task<FrameworkTechnologyListModel> Handle(GetListFrameworkTechnologyQuery request, CancellationToken cancellationToken)
             {
-                IPaginate<FrameworkTechnology> frameworkTechnologies = await _frameworkTechnologyRepository.GetListAsync(index: request.PageRequest.Page, size: request.PageRequest.PageSize);
+                IPaginate<FrameworkTechnology> frameworkTechnologies = await _frameworkTechnologyRepository.GetListAsync(
+                    include:x=> x.Include(c=> c.ProgrammingLanguage),
+                    index: request.PageRequest.Page, 
+                    size: request.PageRequest.PageSize);
 
                 FrameworkTechnologyListModel frameworkTechnologyListModel = _mapper.Map<FrameworkTechnologyListModel>(frameworkTechnologies);
                 return frameworkTechnologyListModel;
