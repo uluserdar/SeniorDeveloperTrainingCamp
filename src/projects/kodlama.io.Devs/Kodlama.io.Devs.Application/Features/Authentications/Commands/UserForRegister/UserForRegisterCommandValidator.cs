@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kodlama.io.Devs.Application.Features.Authentications.Commands
+namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.UserForRegister
 {
-    public class UserForRegisterCommandValidator:AbstractValidator<UserForRegisterCommand>
+    public class UserForRegisterCommandValidator : AbstractValidator<UserForRegisterCommand>
     {
         public UserForRegisterCommandValidator()
         {
-            RuleFor(x=>x.Email).NotEmpty();
+            RuleFor(x => x.Email).NotEmpty();
             RuleFor(x => x.Email).NotNull();
             RuleFor(x => x.Email).EmailAddress();
             RuleFor(x => x.Password).NotNull();

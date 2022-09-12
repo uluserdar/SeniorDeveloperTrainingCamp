@@ -11,9 +11,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kodlama.io.Devs.Application.Features.Authentications.Commands
+namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.UserForRegister
 {
-    public class UserForRegisterCommand:IRequest<UserForRegisterDto>
+    public class UserForRegisterCommand : IRequest<UserForRegisterDto>
     {
         public string Email { get; set; }
         public string Password { get; set; }
@@ -45,8 +45,8 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Commands
                 mappedUser.PasswordSalt = passwordSalt;
                 mappedUser.PasswordHash = passwordHash;
 
-                User addedUser= await _userRepository.AddAsync(mappedUser);
-                UserForRegisterDto userForRegisterDto =_mapper.Map<UserForRegisterDto>(addedUser);
+                User addedUser = await _userRepository.AddAsync(mappedUser);
+                UserForRegisterDto userForRegisterDto = _mapper.Map<UserForRegisterDto>(addedUser);
                 userForRegisterDto.Password = request.Password;
 
                 return userForRegisterDto;
