@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="Features\FrameworkTechnologies\Profiles\" />
+    <Folder Include="Features\ProgrammingLanguages\Queries\GetListFrameworkTechnologyById\" />
   </ItemGroup>
 
 </Project>
