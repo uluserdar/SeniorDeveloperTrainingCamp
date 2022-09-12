@@ -18,15 +18,11 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.Cr
             private readonly IFrameworkTechnologyRepository _frameworkTechnologyRepository;
             private readonly FrameworkTechnologyBusinessRule _frameworkTechnologyBusinessRule;
 
-            public CreateFrameworkTechnologyCommandHandler(FrameworkTechnologyBusinessRule frameworkTechnologyBusinessRule)
-            {
-                _frameworkTechnologyBusinessRule = frameworkTechnologyBusinessRule;
-            }
-
-            public CreateFrameworkTechnologyCommandHandler(IMapper mapper, IFrameworkTechnologyRepository frameworkTechnologyRepository)
+            public CreateFrameworkTechnologyCommandHandler(IMapper mapper, IFrameworkTechnologyRepository frameworkTechnologyRepository, FrameworkTechnologyBusinessRule frameworkTechnologyBusinessRule)
             {
                 _mapper = mapper;
                 _frameworkTechnologyRepository = frameworkTechnologyRepository;
+                _frameworkTechnologyBusinessRule = frameworkTechnologyBusinessRule;
             }
 
             public async Task<CreatedFrameworkTechnologyDto> Handle(CreateFrameworkTechnologyCommand request, CancellationToken cancellationToken)
