@@ -29,8 +29,9 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.Up
             public async Task<UpdatedFrameworkTechnologyDto> Handle(UpdateFrameworkTechnologyCommand request, CancellationToken cancellationToken)
             {
                 await _frameworkTechnologyBusinessRule.FrameworkTechnologyShouldExistsWhenRequested(request.Id);
+                await _frameworkTechnologyBusinessRule.ProgrammingLanguageShouldExistsWhenRequested(request.ProgrammingLanguageId);
                 await _frameworkTechnologyBusinessRule.FrameworkTechnologyNameCanNotBeDublicatedWhenUpdated(request.Id, request.Name);
-                
+
                 FrameworkTechnology mappedFrameworkTechnology = _mapper.Map<FrameworkTechnology>(request);
                 FrameworkTechnology updatedFrameworkTechnology =await _frameworkTechnologyRepository.UpdateAsync(mappedFrameworkTechnology);
                 UpdatedFrameworkTechnologyDto updatedFrameworkTechnologyDto=_mapper.Map<UpdatedFrameworkTechnologyDto>(updatedFrameworkTechnology);

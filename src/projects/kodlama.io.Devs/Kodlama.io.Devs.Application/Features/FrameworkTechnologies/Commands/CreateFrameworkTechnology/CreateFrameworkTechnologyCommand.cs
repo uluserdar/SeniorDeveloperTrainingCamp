@@ -27,6 +27,7 @@ namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.Cr
             public async Task<CreatedFrameworkTechnologyDto> Handle(CreateFrameworkTechnologyCommand request, CancellationToken cancellationToken)
             {
                 await _frameworkTechnologyBusinessRule.FrameworkTechnologyNameCanNotBeDublicatedWhenInserted(request.Name);
+                await _frameworkTechnologyBusinessRule.ProgrammingLanguageShouldExistsWhenRequested(request.ProgrammingLanguageId);
 
                 FrameworkTechnology mappedFrameworkTechnology = _mapper.Map<FrameworkTechnology>(request);
                 FrameworkTechnology createdFrameworkTechnology = await _frameworkTechnologyRepository.AddAsync(mappedFrameworkTechnology);
