@@ -1,4 +1,5 @@
-﻿using Core.Application.Pipelines.Validation;
+﻿using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using Kodlama.io.Devs.Application.Features.Authentications.Rules;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Rules;
@@ -21,6 +22,7 @@ namespace Kodlama.io.Devs.Application
             services.AddScoped<AuthenticationBusinessRule>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>),typeof(RequestValidationBehavior<,>));
 
             return services;
