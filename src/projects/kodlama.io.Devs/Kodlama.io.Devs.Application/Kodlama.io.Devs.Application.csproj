@@ -17,6 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Authentications\Commands\" />
+    <Folder Include="Features\Authentications\Constants\" />
+    <Folder Include="Features\Authentications\Dtos\" />
+    <Folder Include="Features\Authentications\Models\" />
+    <Folder Include="Features\Authentications\Rules\" />
+    <Folder Include="Features\Authentications\Profiles\" />
+    <Folder Include="Features\Authentications\Queries\" />
     <Folder Include="Features\FrameworkTechnologies\Profiles\" />
   </ItemGroup>
 
