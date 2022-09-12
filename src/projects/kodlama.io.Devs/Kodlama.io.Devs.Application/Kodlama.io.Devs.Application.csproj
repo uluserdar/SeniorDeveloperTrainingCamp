@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Features\Authentications\**" />
-    <EmbeddedResource Remove="Features\Authentications\**" />
-    <None Remove="Features\Authentications\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
   </ItemGroup>
@@ -23,6 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Authentications\Dtos\" />
+    <Folder Include="Features\Authentications\Models\" />
+    <Folder Include="Features\Authentications\Queries\" />
+    <Folder Include="Features\Authentications\Profiles\" />
     <Folder Include="Features\FrameworkTechnologies\Profiles\" />
   </ItemGroup>
 
