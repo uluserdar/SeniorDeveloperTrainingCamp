@@ -1,3 +1,4 @@
+using Application;
 using Core.CrossCuttingConcerns.Exceptions;
 using Kodlama.io.Devs.Application;
 using Kodlama.io.Devs.Persistence;
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddSecurityServices();
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceService(builder.Configuration);
 

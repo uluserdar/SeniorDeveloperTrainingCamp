@@ -39,7 +39,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.UserForR
                 User user = await _userRepository.GetAsync(u => u.Email == request.Email);
                 _authenticationBusinessRule.UserCanNotBeDublicatedWhenInserted(user);
 
-                HashingHelper.CreatePasswordHash(request.Password, out var passwordSalt, out var passwordHash);
+                HashingHelper.CreatePasswordHash(request.Password, out var passwordHash, out var passwordSalt);
 
                 User mappedUser = _mapper.Map<User>(request);
                 mappedUser.PasswordSalt = passwordSalt;

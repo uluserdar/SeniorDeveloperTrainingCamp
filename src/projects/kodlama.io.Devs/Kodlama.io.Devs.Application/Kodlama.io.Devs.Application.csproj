@@ -19,7 +19,6 @@
   <ItemGroup>
     <Folder Include="Features\Authentications\Dtos\" />
     <Folder Include="Features\Authentications\Models\" />
-    <Folder Include="Features\Authentications\Queries\" />
     <Folder Include="Features\FrameworkTechnologies\Profiles\" />
   </ItemGroup>
 
