@@ -15,6 +15,9 @@ namespace Kodlama.io.Devs.Persistence.Contexts
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<GroupOperationClaim> GroupOperationClaims { get; set; }
+        public DbSet<UserGroup> UserGroups { get; set; }
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -55,6 +58,7 @@ namespace Kodlama.io.Devs.Persistence.Contexts
                 user.Property(p => p.AuthenticatorType).HasColumnName("AuthenticatorType");
                 user.HasMany(user => user.UserOperationClaims);
                 user.HasMany(user => user.RefreshTokens);
+                user.HasMany(user => user.Groups);
             });
 
             modelBuilder.Entity<OperationClaim>(oc =>
@@ -62,6 +66,8 @@ namespace Kodlama.io.Devs.Persistence.Contexts
                 oc.ToTable("OperationClaims");
                 oc.HasKey(k => k.Id);
                 oc.Property(p => p.Name).HasColumnName("Name");
+                oc.HasMany(p => p.GroupOperationClaims);
+                oc.HasMany(p => p.UserOperationClaims);
             });
 
             modelBuilder.Entity<UserOperationClaim>(uoc =>
@@ -88,6 +94,35 @@ namespace Kodlama.io.Devs.Persistence.Contexts
                 rt.Property(p => p.ReplacedByToken).HasColumnName("ReplacedByToken");
                 rt.Property(p => p.ReasonRevoked).HasColumnName("ReasonRevoked");
                 rt.HasOne(p => p.User);
+            });
+
+            modelBuilder.Entity<Group>(g =>
+            {
+                g.ToTable("Groups");
+                g.HasKey(k => k.Id);
+                g.Property(p => p.Name).HasColumnName("Name");
+                g.HasMany(p => p.Users);
+                g.HasMany(p => p.GroupOperationClaims);
+            });
+
+            modelBuilder.Entity<UserGroup>(ug =>
+            {
+                ug.ToTable("UserGroups");
+                ug.HasKey(k => k.Id);
+                ug.Property(p => p.UserId).HasColumnName("UserId");
+                ug.Property(p => p.GroupId).HasColumnName("GroupId");
+                ug.HasOne(p => p.User);
+                ug.HasOne(p => p.Group);
+            });
+
+            modelBuilder.Entity<GroupOperationClaim>(goc =>
+            {
+                goc.ToTable("GroupOperationClaims");
+                goc.HasKey(k => k.Id);
+                goc.Property(p => p.GroupId).HasColumnName("GroupId");
+                goc.Property(p => p.OperationClaimId).HasColumnName("OperationClaimId");
+                goc.HasOne(p => p.Group);
+                goc.HasOne(p => p.OperationClaim);
             });
 
             ProgrammingLanguage[] programmingLanguageSeeds = { new(1, "C#"), new(2, "Java"), new(3, "Pyton"), new(4, "Php") };
