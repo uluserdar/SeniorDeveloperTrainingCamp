@@ -5,11 +5,6 @@ using Kodlama.io.Devs.Application.Features.Authentications.Dtos;
 using Kodlama.io.Devs.Application.Features.Authentications.Rules;
 using Kodlama.io.Devs.Application.Services.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Kodlama.io.Devs.Application.Features.Authentications.Queries.LoginUser
 {
