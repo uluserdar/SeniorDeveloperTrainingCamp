@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using Core.Security.Dtos;
 using Core.Security.Entities;
-using Kodlama.io.Devs.Application.Features.Authentications.Commands.UserForRegister;
-using Kodlama.io.Devs.Application.Features.Authentications.Queries.UserForLogin;
+using Kodlama.io.Devs.Application.Features.Authentications.Commands.RegisterUser;
+using Kodlama.io.Devs.Application.Features.Authentications.Dtos;
+using Kodlama.io.Devs.Application.Features.Authentications.Queries.LoginUser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,11 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Profiles
     {
         public MappingProfile()
         {
-            CreateMap<User, UserForRegisterDto>().ReverseMap();
-            CreateMap<User, UserForRegisterCommand>().ReverseMap();
-            CreateMap<User, UserForLoginDto>().ReverseMap();
-            CreateMap<User, UserForLoginQuery>().ReverseMap();
+            CreateMap<User, RegisteredUserDto>().ReverseMap();
+            CreateMap<User, RegisterUserCommand>().ReverseMap();
+            CreateMap<User, LoginUserQuery>().ReverseMap();
+            CreateMap<User, LoggedUserDto>().ReverseMap();
+            CreateMap<LoggedUserDto,LoginUserQuery>().ReverseMap();
         }
     }
 }

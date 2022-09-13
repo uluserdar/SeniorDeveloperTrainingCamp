@@ -1,6 +1,7 @@
 ﻿using Core.Security.Dtos;
-using Kodlama.io.Devs.Application.Features.Authentications.Commands.UserForRegister;
-using Kodlama.io.Devs.Application.Features.Authentications.Queries.UserForLogin;
+using Kodlama.io.Devs.Application.Features.Authentications.Commands.RegisterUser;
+using Kodlama.io.Devs.Application.Features.Authentications.Dtos;
+using Kodlama.io.Devs.Application.Features.Authentications.Queries.LoginUser;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,16 +12,16 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
     public class AuthsController : BaseController
     {
         [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromBody] UserForRegisterCommand userForRegisterCommand)
+        public async Task<IActionResult> Register([FromBody] RegisterUserCommand registerUserCommand)
         {
-            UserForRegisterDto userForRegisterDto = await Mediator.Send(userForRegisterCommand);
-            return Created("", userForRegisterDto);
+            RegisteredUserDto registeredUserDto = await Mediator.Send(registerUserCommand);
+            return Created("", registeredUserDto);
         }
 
         [HttpGet("Login")]
-        public async Task<IActionResult> Login([FromQuery] UserForLoginQuery userForLoginQuery)
+        public async Task<IActionResult> Login([FromQuery] LoginUserQuery loginUserQuery)
         {
-            var result = await Mediator.Send(userForLoginQuery);
+            var result = await Mediator.Send(loginUserQuery);
             return Ok(result);
         }
 

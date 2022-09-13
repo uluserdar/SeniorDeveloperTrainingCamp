@@ -2,7 +2,6 @@
 using Kodlama.io.Devs.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Runtime.Versioning;
 
 namespace Kodlama.io.Devs.Persistence.Contexts
 {
@@ -49,11 +48,11 @@ namespace Kodlama.io.Devs.Persistence.Contexts
             {
                 user.ToTable("Users");
                 user.HasKey(k => k.Id);
-                user.Property(p => p.FirstName).HasColumnName("FirstName");
-                user.Property(p => p.LastName).HasColumnName("LastName");
-                user.Property(p => p.Email).HasColumnName("Email");
-                user.Property(p => p.PasswordSalt).HasColumnName("PasswordSalt");
-                user.Property(p => p.PasswordHash).HasColumnName("PasswordHash");
+                user.Property<string>(p => p.FirstName).HasColumnName<string>("FirstName");
+                user.Property<string>(p => p.LastName).HasColumnName<string>("LastName");
+                user.Property<string>(p => p.Email).HasColumnName<string>("Email");
+                user.Property<byte[]>(p => p.PasswordSalt).HasColumnName<byte[]>("PasswordSalt");
+                user.Property<byte[]>(p => p.PasswordHash).HasColumnName<byte[]>("PasswordHash");
                 user.Property(p => p.Status).HasColumnName("Status");
                 user.Property(p => p.AuthenticatorType).HasColumnName("AuthenticatorType");
                 user.HasMany(user => user.UserOperationClaims);
@@ -65,7 +64,7 @@ namespace Kodlama.io.Devs.Persistence.Contexts
             {
                 oc.ToTable("OperationClaims");
                 oc.HasKey(k => k.Id);
-                oc.Property(p => p.Name).HasColumnName("Name");
+                oc.Property<string>(p => p.Name).HasColumnName<string>("Name");
                 oc.HasMany(p => p.GroupOperationClaims);
                 oc.HasMany(p => p.UserOperationClaims);
             });
@@ -100,7 +99,7 @@ namespace Kodlama.io.Devs.Persistence.Contexts
             {
                 g.ToTable("Groups");
                 g.HasKey(k => k.Id);
-                g.Property(p => p.Name).HasColumnName("Name");
+                g.Property<string>(p => p.Name).HasColumnName<string>("Name");
                 g.HasMany(p => p.Users);
                 g.HasMany(p => p.GroupOperationClaims);
             });

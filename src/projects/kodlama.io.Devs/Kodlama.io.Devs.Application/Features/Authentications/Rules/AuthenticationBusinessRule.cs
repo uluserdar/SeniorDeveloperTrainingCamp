@@ -12,19 +12,20 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Rules
 {
     public class AuthenticationBusinessRule
     {
-        public void UserCanNotBeDublicatedWhenInserted(User user)
+
+        public void CheckIfActiveUser(User user)
         {
-            if (user != null) throw new BusinessException(AuthenticationMesseges.UserCanNotBeDublicatedWhenInsertedMessage);
+            if (user == null) throw new BusinessException(AuthenticationMesseges.CheckIfActiveUserErrorMessage);
         }
 
-        public void ActiveUserExistControl(User user)
+        public void CheckIfPasswordIsVerify(string password,byte[] passwordHash, byte[] passwordSalt)
         {
-            if (user == null) throw new BusinessException(AuthenticationMesseges.ActiveUserExistsControlMessage);
+            if (!HashingHelper.VerifyPasswordHash(password, passwordHash, passwordSalt)) throw new BusinessException(AuthenticationMesseges.CheckIfPasswordIsVerifyErrorMessage);
         }
 
-        public void ActiveUserPasswordVerify(string password,byte[] passwordHash, byte[] passwordSalt)
+        public void CheckIfRegisteredUser(User user)
         {
-            if (!HashingHelper.VerifyPasswordHash(password, passwordHash, passwordSalt)) throw new BusinessException(AuthenticationMesseges.PasswordErrorMessage);
+            if(user== null) throw new BusinessException(AuthenticationMesseges.CheckIfRegisteredUserErrorMessage);
         }
     }
 }
