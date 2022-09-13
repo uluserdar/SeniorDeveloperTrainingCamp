@@ -8,7 +8,7 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthenticationController : BaseController
+    public class AuthsController : BaseController
     {
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody] UserForRegisterCommand userForRegisterCommand)
