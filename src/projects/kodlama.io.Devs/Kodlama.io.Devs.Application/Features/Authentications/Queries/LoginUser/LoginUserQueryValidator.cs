@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kodlama.io.Devs.Application.Features.Authentications.Queries.UserForLogin
+namespace Kodlama.io.Devs.Application.Features.Authentications.Queries.LoginUser
 {
-    public class UserForLoginQueryValidator:AbstractValidator<UserForLoginQuery>
+    public class LoginUserQueryValidator:AbstractValidator<LoginUserQuery>
     {
-        public UserForLoginQueryValidator()
+        public LoginUserQueryValidator()
         {
             RuleFor(x => x.Email).NotNull();
             RuleFor(x => x.Email).NotEmpty();
