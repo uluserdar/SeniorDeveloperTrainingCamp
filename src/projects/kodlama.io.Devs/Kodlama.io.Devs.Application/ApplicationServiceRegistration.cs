@@ -5,6 +5,7 @@ using Kodlama.io.Devs.Application.Features.Authentications.Rules;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Rules;
 using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Rules;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -22,8 +23,11 @@ namespace Kodlama.io.Devs.Application
             services.AddScoped<AuthenticationBusinessRule>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+           
             services.AddTransient(typeof(IPipelineBehavior<,>),typeof(RequestValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             return services;
         }
