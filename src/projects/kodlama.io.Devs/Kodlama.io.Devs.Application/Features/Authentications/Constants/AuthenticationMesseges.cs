@@ -9,5 +9,7 @@
         public static string CheckIfPasswordIsVerifyErrorMessage => "Password error";
 
         public static string CheckIfRegisteredUserErrorMessage => "There is a registered user with this email";
+
+        public static string CheckIfExistsUserErrorMessage => "User not found";
     }
 }

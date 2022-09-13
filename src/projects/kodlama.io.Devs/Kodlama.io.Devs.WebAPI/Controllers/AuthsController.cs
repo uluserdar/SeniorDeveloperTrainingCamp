@@ -1,5 +1,6 @@
 ﻿using Core.Security.Dtos;
 using Kodlama.io.Devs.Application.Features.Authentications.Commands.RegisterUser;
+using Kodlama.io.Devs.Application.Features.Authentications.Commands.UpdateUser;
 using Kodlama.io.Devs.Application.Features.Authentications.Dtos;
 using Kodlama.io.Devs.Application.Features.Authentications.Queries.LoginUser;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +23,13 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         public async Task<IActionResult> Login([FromQuery] LoginUserQuery loginUserQuery)
         {
             var result = await Mediator.Send(loginUserQuery);
+            return Ok(result);
+        }
+
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update([FromBody] UpdateUserCommand updateUserCommand)
+        {
+            var result = await Mediator.Send(updateUserCommand);
             return Ok(result);
         }
 
