@@ -18,9 +18,14 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Rules
             if (!HashingHelper.VerifyPasswordHash(password, passwordHash, passwordSalt)) throw new BusinessException(AuthenticationMesseges.CheckIfPasswordIsVerifyErrorMessage);
         }
 
+        public void CheckIfExistsUser(User user)
+        {
+            if(user==null) throw new BusinessException(AuthenticationMesseges.CheckIfExistsUserErrorMessage);
+        }
+
         public void CheckIfRegisteredUser(User user)
         {
-            if(user== null) throw new BusinessException(AuthenticationMesseges.CheckIfRegisteredUserErrorMessage);
+            if(user != null) throw new BusinessException(AuthenticationMesseges.CheckIfRegisteredUserErrorMessage);
         }
     }
 }
