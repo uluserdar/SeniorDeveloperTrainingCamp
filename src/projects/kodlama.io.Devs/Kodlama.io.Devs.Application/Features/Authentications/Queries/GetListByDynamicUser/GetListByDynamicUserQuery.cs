@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Requests;
 using Core.Persistence.Dynamic;
 using Core.Persistence.Paging;
@@ -14,10 +15,11 @@ using System.Threading.Tasks;
 
 namespace Kodlama.io.Devs.Application.Features.Authentications.Queries.GetListByDynamicUser
 {
-    public class GetListByDynamicUserQuery:IRequest<UserListModel>
+    public class GetListByDynamicUserQuery:IRequest<UserListModel>,ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
         public Dynamic Dynamic { get; set; }
+        public string[] Roles => new[] { "User.Read" };
 
         public class GetListByDynamicUserQueryHandler : IRequestHandler<GetListByDynamicUserQuery, UserListModel>
         {

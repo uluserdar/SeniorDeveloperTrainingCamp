@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Security.Entities;
 using Core.Security.Hashing;
 using Kodlama.io.Devs.Application.Features.Authentications.Dtos;
@@ -8,13 +9,14 @@ using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.RegisterUser
 {
-    public class RegisterUserCommand:IRequest<RegisteredUserDto>
+    public class RegisterUserCommand:IRequest<RegisteredUserDto>,ISecuredRequest
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public bool Status { get; set; }
+        public string[] Roles => new[] { "User.Create" };
 
         public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, RegisteredUserDto>
         {

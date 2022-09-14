@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Security.Entities;
 using Core.Security.Hashing;
 using Kodlama.io.Devs.Application.Features.Authentications.Dtos;
@@ -8,7 +9,7 @@ using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.UpdateUser
 {
-    public class UpdateUserCommand:IRequest<UpdatedUserDto>
+    public class UpdateUserCommand:IRequest<UpdatedUserDto>,ISecuredRequest
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -16,6 +17,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.UpdateUs
         public string Email { get; set; }
         public string Password { get; set; }
         public bool Status { get; set; }
+        public string[] Roles => new[] { "User.Update" };
 
         public class UpdateUserQueryHandler : IRequestHandler<UpdateUserCommand, UpdatedUserDto>
         {
