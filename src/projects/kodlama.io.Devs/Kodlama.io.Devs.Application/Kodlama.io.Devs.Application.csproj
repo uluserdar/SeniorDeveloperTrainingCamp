@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <Folder Include="Features\FrameworkTechnologies\Profiles\" />
+    <Folder Include="Features\OperationClaims\Models\" />
+    <Folder Include="Features\OperationClaims\Queries\" />
   </ItemGroup>
 
 </Project>
