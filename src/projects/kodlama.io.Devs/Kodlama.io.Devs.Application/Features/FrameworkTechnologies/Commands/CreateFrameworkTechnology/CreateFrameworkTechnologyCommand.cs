@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Dtos;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Rules;
 using Kodlama.io.Devs.Application.Services.Repositories;
@@ -7,10 +8,11 @@ using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.CreateFrameworkTechnology
 {
-    public class CreateFrameworkTechnologyCommand : IRequest<CreatedFrameworkTechnologyDto>
+    public class CreateFrameworkTechnologyCommand : IRequest<CreatedFrameworkTechnologyDto>,ISecuredRequest
     {
         public int ProgrammingLanguageId { get; set; }
         public string Name { get; set; }
+        public string[] Roles => new[] { nameof(CreateFrameworkTechnologyCommand) };
 
         public class CreateFrameworkTechnologyCommandHandler : IRequestHandler<CreateFrameworkTechnologyCommand, CreatedFrameworkTechnologyDto>
         {

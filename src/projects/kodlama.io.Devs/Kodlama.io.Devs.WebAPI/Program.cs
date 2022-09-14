@@ -3,10 +3,8 @@ using Core.CrossCuttingConcerns.Exceptions;
 using Core.Security.Encryption;
 using Core.Security.JWT;
 using Kodlama.io.Devs.Application;
-using Kodlama.io.Devs.Persistence;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using Kodlama.io.Devs.Application.Helpers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -42,6 +40,7 @@ builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "JWTToken_Auth_API",
+        Description = "Demo User Login\r\n\r\nEmail: admin@admin.com\r\n\r\nPassword: Admin1234",
         Version = "v1"
     });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -77,6 +76,7 @@ if (app.Environment.IsDevelopment())
 if (app.Environment.IsProduction())
     app.ConfigureCustomExceptionMiddleware();
 
+await app.UseDbOperationClaimCreator();
 app.UseAuthentication();
 app.UseAuthorization();
 

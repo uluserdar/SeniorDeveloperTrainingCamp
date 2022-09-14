@@ -12,7 +12,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Queries.GetListUs
     public class GetListUserQuery:IRequest<UserListModel>,ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
-        public string[] Roles => new[] { "User.Read" };
+        public string[] Roles => new[] { nameof(GetListUserQuery) };
 
         public class GetListUserQueryHandler : IRequestHandler<GetListUserQuery, UserListModel>
         {

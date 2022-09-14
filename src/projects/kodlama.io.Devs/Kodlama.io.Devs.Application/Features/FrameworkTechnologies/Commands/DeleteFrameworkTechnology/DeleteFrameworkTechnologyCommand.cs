@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Dtos;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Rules;
 using Kodlama.io.Devs.Application.Services.Repositories;
@@ -7,9 +8,10 @@ using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Commands.DeleteFrameworkTechnology
 {
-    public class DeleteFrameworkTechnologyCommand:IRequest<DeletedFrameworkTechnologyDto>
+    public class DeleteFrameworkTechnologyCommand:IRequest<DeletedFrameworkTechnologyDto>,ISecuredRequest
     {
         public int Id { get; set; }
+        public string[] Roles => new[] { nameof(DeleteFrameworkTechnologyCommand) };
 
         public class DeleteFrameworkTechnologyCommandHandler : IRequestHandler<DeleteFrameworkTechnologyCommand, DeletedFrameworkTechnologyDto>
         {

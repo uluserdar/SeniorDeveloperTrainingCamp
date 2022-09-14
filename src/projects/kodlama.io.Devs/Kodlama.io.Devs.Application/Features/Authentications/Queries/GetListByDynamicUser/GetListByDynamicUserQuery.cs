@@ -19,7 +19,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Queries.GetListBy
     {
         public PageRequest PageRequest { get; set; }
         public Dynamic Dynamic { get; set; }
-        public string[] Roles => new[] { "User.Read" };
+        public string[] Roles => new[] { nameof(GetListByDynamicUserQuery) };
 
         public class GetListByDynamicUserQueryHandler : IRequestHandler<GetListByDynamicUserQuery, UserListModel>
         {
