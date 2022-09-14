@@ -16,7 +16,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.Register
         public string Email { get; set; }
         public string Password { get; set; }
         public bool Status { get; set; }
-        public string[] Roles => new[] { "User.Create" };
+        public string[] Roles => new[] { nameof(RegisterUserCommand) };
 
         public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, RegisteredUserDto>
         {

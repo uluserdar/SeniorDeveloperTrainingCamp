@@ -1,7 +1,7 @@
 ﻿using Core.Persistence.Repositories;
 using Kodlama.io.Devs.Application.Services.Repositories;
 using Kodlama.io.Devs.Domain.Entities;
-using Kodlama.io.Devs.Persistence.Contexts;
+using Kodlama.io.Devs.Application.Contexts;
 
 namespace Kodlama.io.Devs.Persistence.Repositories
 {

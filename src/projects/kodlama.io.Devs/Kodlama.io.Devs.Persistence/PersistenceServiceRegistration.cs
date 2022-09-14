@@ -1,11 +1,11 @@
 ﻿using Kodlama.io.Devs.Application.Services.Repositories;
-using Kodlama.io.Devs.Persistence.Contexts;
-using Kodlama.io.Devs.Persistence.Repositories;
+using Kodlama.io.Devs.Application.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Kodlama.io.Devs.Persistence.Repositories;
 
-namespace Kodlama.io.Devs.Persistence
+namespace Kodlama.io.Devs.Application
 {
     public static class PersistenceServiceRegistration
     {
@@ -18,6 +18,8 @@ namespace Kodlama.io.Devs.Persistence
             services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
             services.AddScoped<IFrameworkTechnologyRepository, FrameworkTechnologyRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
+            services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
 
             return services;
         }

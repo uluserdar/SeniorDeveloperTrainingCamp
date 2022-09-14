@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Models;
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Queries.GetListFrameworkTechnology
 {
-    public class GetListFrameworkTechnologyQuery:IRequest<FrameworkTechnologyListModel>
+    public class GetListFrameworkTechnologyQuery:IRequest<FrameworkTechnologyListModel>,ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
+        public string[] Roles => new[] {nameof(GetListFrameworkTechnologyQuery) };
 
         public class GetListFrameworkTechnologyQueryHandler : IRequestHandler<GetListFrameworkTechnologyQuery, FrameworkTechnologyListModel>
         {

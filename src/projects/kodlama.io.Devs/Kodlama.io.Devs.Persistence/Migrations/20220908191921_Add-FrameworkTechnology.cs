@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Kodlama.io.Devs.Persistence.Migrations
+namespace Kodlama.io.Devs.Application.Migrations
 {
     public partial class AddFrameworkTechnology : Migration
     {

@@ -11,7 +11,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Queries.GetByIdUs
     public class GetByIdUserQuery : IRequest<UserGetByIdDto>, ISecuredRequest
     {
         public int Id { get; set; }
-        public string[] Roles => new[] { "User.Read" };
+        public string[] Roles => new[] { nameof(GetByIdUserQuery) };
 
         public class GetByIdUserQueryHandler : IRequestHandler<GetByIdUserQuery, UserGetByIdDto>
         {

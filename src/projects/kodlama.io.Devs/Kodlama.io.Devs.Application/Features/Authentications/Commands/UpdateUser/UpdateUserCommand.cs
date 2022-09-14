@@ -17,7 +17,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.UpdateUs
         public string Email { get; set; }
         public string Password { get; set; }
         public bool Status { get; set; }
-        public string[] Roles => new[] { "User.Update" };
+        public string[] Roles => new[] { nameof(UpdateUserCommand) };
 
         public class UpdateUserQueryHandler : IRequestHandler<UpdateUserCommand, UpdatedUserDto>
         {

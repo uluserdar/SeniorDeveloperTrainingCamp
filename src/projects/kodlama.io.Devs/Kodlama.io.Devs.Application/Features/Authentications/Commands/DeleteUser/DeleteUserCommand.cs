@@ -17,7 +17,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.DeleteUs
             private readonly IMapper _mapper;
             private readonly IUserRepository _userRepository;
             private readonly AuthenticationBusinessRule _authenticationBusinessRule;
-            public string[] Roles => new[] { "User.Delete" };
+            public string[] Roles => new[] { nameof(DeleteUserCommand) };
 
             public DeleteUserCommandHandler(IMapper mapper, IUserRepository userRepository, AuthenticationBusinessRule authenticationBusinessRule)
             {

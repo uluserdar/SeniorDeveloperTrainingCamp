@@ -3,7 +3,7 @@ using Kodlama.io.Devs.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Kodlama.io.Devs.Persistence.Contexts
+namespace Kodlama.io.Devs.Application.Contexts
 {
     public class BaseDbContext : DbContext
     {
