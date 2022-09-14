@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Security.Entities;
 using Kodlama.io.Devs.Application.Features.Authentications.Dtos;
 using Kodlama.io.Devs.Application.Features.Authentications.Rules;
@@ -7,9 +8,10 @@ using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.Authentications.Queries.GetByIdUser
 {
-    public class GetByIdUserQuery:IRequest<UserGetByIdDto>
+    public class GetByIdUserQuery : IRequest<UserGetByIdDto>, ISecuredRequest
     {
         public int Id { get; set; }
+        public string[] Roles => new[] { "User.Read" };
 
         public class GetByIdUserQueryHandler : IRequestHandler<GetByIdUserQuery, UserGetByIdDto>
         {

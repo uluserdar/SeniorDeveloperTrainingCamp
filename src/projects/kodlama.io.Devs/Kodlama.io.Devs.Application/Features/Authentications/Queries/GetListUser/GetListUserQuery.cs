@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Core.Security.Entities;
@@ -8,9 +9,10 @@ using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.Authentications.Queries.GetListUser
 {
-    public class GetListUserQuery:IRequest<UserListModel>
+    public class GetListUserQuery:IRequest<UserListModel>,ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
+        public string[] Roles => new[] { "User.Read" };
 
         public class GetListUserQueryHandler : IRequestHandler<GetListUserQuery, UserListModel>
         {

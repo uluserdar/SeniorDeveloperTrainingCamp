@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Security.Entities;
 using Kodlama.io.Devs.Application.Features.Authentications.Dtos;
 using Kodlama.io.Devs.Application.Features.Authentications.Rules;
@@ -11,11 +12,12 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.DeleteUs
     {
         public int Id { get; set; }
 
-        public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, DeletedUserDto>
+        public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, DeletedUserDto>,ISecuredRequest
         {
             private readonly IMapper _mapper;
             private readonly IUserRepository _userRepository;
             private readonly AuthenticationBusinessRule _authenticationBusinessRule;
+            public string[] Roles => new[] { "User.Delete" };
 
             public DeleteUserCommandHandler(IMapper mapper, IUserRepository userRepository, AuthenticationBusinessRule authenticationBusinessRule)
             {
