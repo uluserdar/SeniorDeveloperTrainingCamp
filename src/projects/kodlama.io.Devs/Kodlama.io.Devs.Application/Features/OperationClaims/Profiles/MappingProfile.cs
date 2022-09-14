@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core.Security.Entities;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.CreateOperationClaim;
+using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.UpdateOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Dtos;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace Kodlama.io.Devs.Application.Features.OperationClaims.Profiles
         {
             CreateMap<OperationClaim, CreatedOperationClaimDto>().ReverseMap();
             CreateMap<OperationClaim, CreateOperationClaimCommand>().ReverseMap();
+            CreateMap<OperationClaim, UpdatedOperationClaimDto>().ReverseMap();
+            CreateMap<OperationClaim, UpdateOperationClaimCommand>().ReverseMap();
         }
     }
 }

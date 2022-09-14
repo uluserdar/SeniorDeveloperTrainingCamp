@@ -22,49 +22,6 @@ namespace Kodlama.io.Devs.Application.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Core.Security.Entities.Group", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Groups", (string)null);
-                });
-
-            modelBuilder.Entity("Core.Security.Entities.GroupOperationClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int")
-                        .HasColumnName("GroupId");
-
-                    b.Property<int>("OperationClaimId")
-                        .HasColumnType("int")
-                        .HasColumnName("OperationClaimId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("OperationClaimId");
-
-                    b.ToTable("GroupOperationClaims", (string)null);
-                });
-
             modelBuilder.Entity("Core.Security.Entities.OperationClaim", b =>
                 {
                     b.Property<int>("Id")
@@ -182,31 +139,6 @@ namespace Kodlama.io.Devs.Application.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("Core.Security.Entities.UserGroup", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int")
-                        .HasColumnName("GroupId");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int")
-                        .HasColumnName("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserGroups", (string)null);
-                });
-
             modelBuilder.Entity("Core.Security.Entities.UserOperationClaim", b =>
                 {
                     b.Property<int>("Id")
@@ -230,21 +162,6 @@ namespace Kodlama.io.Devs.Application.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserOperationClaims", (string)null);
-                });
-
-            modelBuilder.Entity("GroupUser", b =>
-                {
-                    b.Property<int>("GroupsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("GroupsId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("GroupUser");
                 });
 
             modelBuilder.Entity("Kodlama.io.Devs.Domain.Entities.FrameworkTechnology", b =>
@@ -357,25 +274,6 @@ namespace Kodlama.io.Devs.Application.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Core.Security.Entities.GroupOperationClaim", b =>
-                {
-                    b.HasOne("Core.Security.Entities.Group", "Group")
-                        .WithMany("GroupOperationClaims")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Core.Security.Entities.OperationClaim", "OperationClaim")
-                        .WithMany("GroupOperationClaims")
-                        .HasForeignKey("OperationClaimId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Group");
-
-                    b.Navigation("OperationClaim");
-                });
-
             modelBuilder.Entity("Core.Security.Entities.RefreshToken", b =>
                 {
                     b.HasOne("Core.Security.Entities.User", "User")
@@ -383,25 +281,6 @@ namespace Kodlama.io.Devs.Application.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Core.Security.Entities.UserGroup", b =>
-                {
-                    b.HasOne("Core.Security.Entities.Group", "Group")
-                        .WithMany()
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Core.Security.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Group");
 
                     b.Navigation("User");
                 });
@@ -425,21 +304,6 @@ namespace Kodlama.io.Devs.Application.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("GroupUser", b =>
-                {
-                    b.HasOne("Core.Security.Entities.Group", null)
-                        .WithMany()
-                        .HasForeignKey("GroupsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Core.Security.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Kodlama.io.Devs.Domain.Entities.FrameworkTechnology", b =>
                 {
                     b.HasOne("Kodlama.io.Devs.Domain.Entities.ProgrammingLanguage", "ProgrammingLanguage")
@@ -451,15 +315,8 @@ namespace Kodlama.io.Devs.Application.Migrations
                     b.Navigation("ProgrammingLanguage");
                 });
 
-            modelBuilder.Entity("Core.Security.Entities.Group", b =>
-                {
-                    b.Navigation("GroupOperationClaims");
-                });
-
             modelBuilder.Entity("Core.Security.Entities.OperationClaim", b =>
                 {
-                    b.Navigation("GroupOperationClaims");
-
                     b.Navigation("UserOperationClaims");
                 });
 

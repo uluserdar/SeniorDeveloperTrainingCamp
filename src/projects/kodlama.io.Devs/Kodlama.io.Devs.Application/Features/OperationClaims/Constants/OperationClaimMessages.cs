@@ -8,6 +8,7 @@ namespace Kodlama.io.Devs.Application.Features.OperationClaims.Constants
 {
     public static class OperationClaimMessages
     {
-        public static string CheckIfAlreadyExistsOperationClaimMessage => "There is a already exists operation claim";
+        public static string CheckIfAlreadyExistsOperationClaimErrorMessage => "There is a already exists operation claim";
+        public static string CheckIfExistsOperationClaimErrorMessage => "Operation claim not found";
     }
 }
