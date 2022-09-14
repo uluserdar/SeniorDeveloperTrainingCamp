@@ -1,5 +1,5 @@
 # SeniorDeveloperTrainingCamp
 
-Admin User
+# Admin User
 Email: admin@admin.com
 Password: Admin1234
