@@ -39,7 +39,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.Register
                 mappedUser.PasswordHash = passwordHash;
                 mappedUser.PasswordSalt = passwordSalt;
 
-                User addedUser = await _userRepository.AddAsync(user);
+                User addedUser = await _userRepository.AddAsync(mappedUser);
                 RegisteredUserDto registeredUserDto=_mapper.Map<RegisteredUserDto>(addedUser);
                 return registeredUserDto;
             }

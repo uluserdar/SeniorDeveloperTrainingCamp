@@ -32,7 +32,7 @@ namespace Kodlama.io.Devs.Application.Features.Authentications.Commands.UpdateUs
 
             public async Task<UpdatedUserDto> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
             {
-                User user = await _userRepository.GetAsync(x => x.Id == request.Id);
+                User user = await _userRepository.GetAsync(x => x.Id == request.Id,enableTracking:false);
                 _authenticationBusinessRule.CheckIfExistsUser(user);
 
                 HashingHelper.CreatePasswordHash(request.Password, out var passwordHash, out var passwordSalt);
