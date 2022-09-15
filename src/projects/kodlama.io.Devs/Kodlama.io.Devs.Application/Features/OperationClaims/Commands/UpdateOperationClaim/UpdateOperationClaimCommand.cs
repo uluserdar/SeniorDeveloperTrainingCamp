@@ -30,10 +30,10 @@ namespace Kodlama.io.Devs.Application.Features.OperationClaims.Commands.UpdateOp
 
             public async Task<UpdatedOperationClaimDto> Handle(UpdateOperationClaimCommand request, CancellationToken cancellationToken)
             {
-                OperationClaim operationClaim = await _operationClaimRepository.GetAsync(x => x.Id == request.Id);
+                OperationClaim operationClaim = await _operationClaimRepository.GetAsync(x => x.Id == request.Id,enableTracking:false);
                 _operationClaimBusinessRule.CheckIfExistsOperationClaim(operationClaim);
 
-                OperationClaim mappedOperationClaim =_mapper.Map<OperationClaim>(operationClaim);
+                OperationClaim mappedOperationClaim =_mapper.Map<OperationClaim>(request);
                 OperationClaim updatedOperationClaim =await _operationClaimRepository.UpdateAsync(mappedOperationClaim);
                 UpdatedOperationClaimDto updatedOperationClaimDto = _mapper.Map<UpdatedOperationClaimDto>(updatedOperationClaim);
 

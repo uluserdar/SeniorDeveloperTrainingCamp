@@ -29,9 +29,11 @@ namespace Kodlama.io.Devs.Application.Features.OperationClaims.Commands.CreateOp
             public async Task<CreatedOperationClaimDto> Handle(CreateOperationClaimCommand request, CancellationToken cancellationToken)
             {
                 OperationClaim operationClaim = await _operationClaimRepository.GetAsync(x => x.Name == request.Name);
-                _operationClaimBusinessRule.CheckIfExistsOperationClaim(operationClaim);
+                _operationClaimBusinessRule.CheckIfAlreadyExistsOperationClaim(operationClaim);
 
-                OperationClaim addeOperationClaim = await _operationClaimRepository.AddAsync(operationClaim);
+                OperationClaim mappedOperationClaim = _mapper.Map<OperationClaim>(request);
+
+                OperationClaim addeOperationClaim = await _operationClaimRepository.AddAsync(mappedOperationClaim);
                 CreatedOperationClaimDto createdOperationClaimDto=_mapper.Map<CreatedOperationClaimDto>(addeOperationClaim);
 
                 return createdOperationClaimDto;
