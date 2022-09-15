@@ -1,8 +1,10 @@
 ﻿using Core.Application.Requests;
+using Core.Persistence.Dynamic;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.CreateOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.DeleteOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.UpdateOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetByIdOperationClaim;
+using Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetListByDynamicOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetListOperationClaim;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -46,6 +48,14 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         {
             GetListOperationClaimQuery getListOperationClaimQuery = new() { PageRequest = pageRequest };
             var result = await Mediator.Send(getListOperationClaimQuery);
+            return Ok(result);
+        }
+
+        [HttpPost("GetListByDynamic")]
+        public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic)
+        {
+            GetListByDynamicOperationClaimQuery getListByDynamicOperationClaimQuery = new() { PageRequest=pageRequest, Dynamic = dynamic };
+            var result = await Mediator.Send(getListByDynamicOperationClaimQuery);
             return Ok(result);
         }
 
