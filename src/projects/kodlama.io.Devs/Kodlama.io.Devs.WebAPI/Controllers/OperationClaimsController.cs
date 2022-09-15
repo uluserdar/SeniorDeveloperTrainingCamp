@@ -8,6 +8,7 @@ using Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetListByDyna
 using Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetListOperationClaim;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata;
 
 namespace Kodlama.io.Devs.WebAPI.Controllers
 {
@@ -36,9 +37,10 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("GetById/{Id}")]
-        public async Task<IActionResult> GetById([FromRoute] GetByIdOperationClaimQuery getByIdOperationClaimQuery)
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById([FromQuery] int id)
         {
+            GetByIdOperationClaimQuery getByIdOperationClaimQuery = new() { Id = id };
             var result = await Mediator.Send(getByIdOperationClaimQuery);
             return Ok(result);
         }

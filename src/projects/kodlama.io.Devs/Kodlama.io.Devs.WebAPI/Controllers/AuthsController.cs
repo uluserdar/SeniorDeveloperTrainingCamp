@@ -43,9 +43,10 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("GetById/{Id}")]
-        public async Task<IActionResult> GetById([FromRoute]GetByIdUserQuery getUserByIdQuery)
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById([FromQuery]int id)
         {
+            GetByIdUserQuery getUserByIdQuery = new() { Id = id };
             var result = await Mediator.Send(getUserByIdQuery);
             return Ok(result);
         }

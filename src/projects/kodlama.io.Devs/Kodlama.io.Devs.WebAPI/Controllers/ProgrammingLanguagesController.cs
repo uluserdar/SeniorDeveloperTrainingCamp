@@ -15,28 +15,28 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
     [ApiController]
     public class ProgrammingLanguagesController : BaseController
     {
-        [HttpPost]
+        [HttpPost("Add")]
         public async Task<IActionResult> Add([FromBody] CreateProgrammingLanguageCommand createProgrammingLanguageCommand)
         {
             CreatedProgrammingLanguageDto result = await Mediator.Send(createProgrammingLanguageCommand);
             return Created("", result);
         }
 
-        [HttpPut]
+        [HttpPut("Update")]
         public async Task<IActionResult> Update([FromBody] UpdateProgrammingLanguageCommand updateProgrammingLanguageCommand)
         {
             UpdatedProgrammingLanguageDto result = await Mediator.Send(updateProgrammingLanguageCommand);
             return Ok(result);
         }
 
-        [HttpDelete]
+        [HttpDelete("Delete")]
         public async Task<IActionResult> Delete([FromBody] DeleteProgrammingLanguageCommand deleteProgrammingLanguageCommand)
         {
             DeletedProgrammingLanguageDto result = await Mediator.Send(deleteProgrammingLanguageCommand);
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet("GetList")]
         public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
         {
             GetListProgrammingLanguageQuery getListProgrammingLanguageQuery = new() { PageRequest = pageRequest };
@@ -44,9 +44,10 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{Id}")]
-        public async Task<IActionResult> GetById([FromRoute] GetByIdProgrammingLanguageQuery getByIdProgrammingLanguageQuery)
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById([FromQuery]int id)
         {
+            GetByIdProgrammingLanguageQuery getByIdProgrammingLanguageQuery = new() { Id = id };
             ProgrammigLanguageGetByIdDto programmingLanguageGetByIdDto = await Mediator.Send(getByIdProgrammingLanguageQuery);
             return Ok(programmingLanguageGetByIdDto);
         }

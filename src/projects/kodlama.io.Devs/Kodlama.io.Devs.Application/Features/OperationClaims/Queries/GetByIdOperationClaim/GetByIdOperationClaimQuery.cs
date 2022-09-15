@@ -12,7 +12,6 @@ namespace Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetByIdOp
     public class GetByIdOperationClaimQuery:IRequest<OperationClaimGetByIdDto>,ISecuredRequest
     {
         public int Id { get; set; }
-        public string Name { get; set; }
         public string[] Roles => new[] { nameof(GetByIdOperationClaimQuery) };
 
         public class GetByIdOperationClaimQueryHandler : IRequestHandler<GetByIdOperationClaimQuery, OperationClaimGetByIdDto>

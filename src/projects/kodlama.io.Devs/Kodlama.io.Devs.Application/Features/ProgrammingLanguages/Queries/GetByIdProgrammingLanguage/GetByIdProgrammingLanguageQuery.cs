@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Dtos;
 using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Rules;
 using Kodlama.io.Devs.Application.Services.Repositories;
@@ -7,9 +8,10 @@ using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLanguage
 {
-    public class GetByIdProgrammingLanguageQuery:IRequest<ProgrammigLanguageGetByIdDto>
+    public class GetByIdProgrammingLanguageQuery:IRequest<ProgrammigLanguageGetByIdDto>,ISecuredRequest
     {
         public int Id { get; set; }
+        public string[] Roles => new[] { nameof(GetByIdProgrammingLanguageQuery) };
 
         public class GetByIdProgrammingLanguageQueryHandler : IRequestHandler<GetByIdProgrammingLanguageQuery, ProgrammigLanguageGetByIdDto>
         {

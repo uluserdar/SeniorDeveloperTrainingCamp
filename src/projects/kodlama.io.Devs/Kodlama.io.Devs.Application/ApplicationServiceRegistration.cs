@@ -3,6 +3,7 @@ using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using Kodlama.io.Devs.Application.Features.Authentications.Rules;
 using Kodlama.io.Devs.Application.Features.FrameworkTechnologies.Rules;
+using Kodlama.io.Devs.Application.Features.OperationClaims.Rules;
 using Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Rules;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -21,6 +22,7 @@ namespace Kodlama.io.Devs.Application
             services.AddScoped<ProgrammingLanguageBusinessRule>();
             services.AddScoped<FrameworkTechnologyBusinessRule>();
             services.AddScoped<AuthenticationBusinessRule>();
+            services.AddScoped<OperationClaimBusinessRule>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
            
