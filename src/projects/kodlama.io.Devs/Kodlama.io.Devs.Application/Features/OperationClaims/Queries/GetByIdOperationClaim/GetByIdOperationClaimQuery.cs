@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Security.Entities;
+using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.UpdateOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Dtos;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Rules;
 using Kodlama.io.Devs.Application.Services.Repositories;
@@ -7,10 +9,11 @@ using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetByIdOperationClaim
 {
-    public class GetByIdOperationClaimQuery:IRequest<OperationClaimGetByIdDto>
+    public class GetByIdOperationClaimQuery:IRequest<OperationClaimGetByIdDto>,ISecuredRequest
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string[] Roles => new[] { nameof(GetByIdOperationClaimQuery) };
 
         public class GetByIdOperationClaimQueryHandler : IRequestHandler<GetByIdOperationClaimQuery, OperationClaimGetByIdDto>
         {

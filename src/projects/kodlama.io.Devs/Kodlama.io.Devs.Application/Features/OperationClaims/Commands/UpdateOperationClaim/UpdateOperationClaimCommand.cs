@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Security.Entities;
+using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.DeleteOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Dtos;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Rules;
 using Kodlama.io.Devs.Application.Services.Repositories;
@@ -7,10 +9,11 @@ using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.OperationClaims.Commands.UpdateOperationClaim
 {
-    public class UpdateOperationClaimCommand:IRequest<UpdatedOperationClaimDto>
+    public class UpdateOperationClaimCommand:IRequest<UpdatedOperationClaimDto>,ISecuredRequest
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string[] Roles => new[] { nameof(UpdateOperationClaimCommand) };
 
         public class UpdateOperationClaimCommandHandler : IRequestHandler<UpdateOperationClaimCommand, UpdatedOperationClaimDto>
         {

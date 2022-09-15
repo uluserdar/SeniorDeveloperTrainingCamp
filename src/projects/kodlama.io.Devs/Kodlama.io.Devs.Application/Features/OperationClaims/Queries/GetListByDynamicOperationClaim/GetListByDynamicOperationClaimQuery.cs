@@ -1,18 +1,21 @@
 ﻿using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Requests;
 using Core.Persistence.Dynamic;
 using Core.Persistence.Paging;
 using Core.Security.Entities;
+using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.CreateOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Models;
 using Kodlama.io.Devs.Application.Services.Repositories;
 using MediatR;
 
 namespace Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetListByDynamicOperationClaim
 {
-    public class GetListByDynamicOperationClaimQuery:IRequest<OperationClaimListModel>
+    public class GetListByDynamicOperationClaimQuery:IRequest<OperationClaimListModel>,ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
         public Dynamic Dynamic { get; set; }
+        public string[] Roles => new[] { nameof(GetListByDynamicOperationClaimQuery) };
 
         public class GetListByDynamicOperationClaimQueryHandler : IRequestHandler<GetListByDynamicOperationClaimQuery, OperationClaimListModel>
         {
