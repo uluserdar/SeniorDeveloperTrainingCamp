@@ -1,6 +1,7 @@
 ﻿using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.CreateOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.DeleteOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.UpdateOperationClaim;
+using Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetByIdOperationClaim;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +29,13 @@ namespace Kodlama.io.Devs.WebAPI.Controllers
         public async Task<IActionResult> Delete([FromBody]DeleteOperationClaimCommand deleteOperationClaimCommand)
         {
             var result =await Mediator.Send(deleteOperationClaimCommand);
+            return Ok(result);
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetById([FromRoute]GetByIdOperationClaimQuery getByIdOperationClaimQuery)
+        {
+            var result = await Mediator.Send(getByIdOperationClaimQuery);
             return Ok(result);
         }
     }

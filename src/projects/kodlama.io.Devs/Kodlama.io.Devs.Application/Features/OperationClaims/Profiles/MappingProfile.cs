@@ -4,11 +4,7 @@ using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.CreateOperat
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.DeleteOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.UpdateOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetByIdOperationClaim;
 
 namespace Kodlama.io.Devs.Application.Features.OperationClaims.Profiles
 {
@@ -22,6 +18,8 @@ namespace Kodlama.io.Devs.Application.Features.OperationClaims.Profiles
             CreateMap<OperationClaim, UpdateOperationClaimCommand>().ReverseMap();
             CreateMap<OperationClaim,DeletedOperationClaimDto>().ReverseMap();
             CreateMap<OperationClaim, DeleteOperationClaimCommand>().ReverseMap();
+            CreateMap<OperationClaim, OperationClaimGetByIdDto>().ReverseMap();
+            CreateMap<OperationClaim, GetByIdOperationClaimQuery>().ReverseMap();
         }
     }
 }
