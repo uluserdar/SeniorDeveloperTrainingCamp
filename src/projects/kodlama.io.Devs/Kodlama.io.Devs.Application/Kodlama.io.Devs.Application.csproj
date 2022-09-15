@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Features\FrameworkTechnologies\Profiles\" />
-    <Folder Include="Features\OperationClaims\Models\" />
   </ItemGroup>
 
 </Project>

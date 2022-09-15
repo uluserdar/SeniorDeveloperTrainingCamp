@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using Core.Persistence.Paging;
 using Core.Security.Entities;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.CreateOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.DeleteOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Commands.UpdateOperationClaim;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Dtos;
+using Kodlama.io.Devs.Application.Features.OperationClaims.Models;
 using Kodlama.io.Devs.Application.Features.OperationClaims.Queries.GetByIdOperationClaim;
 
 namespace Kodlama.io.Devs.Application.Features.OperationClaims.Profiles
@@ -20,6 +22,8 @@ namespace Kodlama.io.Devs.Application.Features.OperationClaims.Profiles
             CreateMap<OperationClaim, DeleteOperationClaimCommand>().ReverseMap();
             CreateMap<OperationClaim, OperationClaimGetByIdDto>().ReverseMap();
             CreateMap<OperationClaim, GetByIdOperationClaimQuery>().ReverseMap();
+            CreateMap<OperationClaim, OperationClaimListDto>().ReverseMap();
+            CreateMap<IPaginate<OperationClaim>, OperationClaimListModel>().ReverseMap();
         }
     }
 }
