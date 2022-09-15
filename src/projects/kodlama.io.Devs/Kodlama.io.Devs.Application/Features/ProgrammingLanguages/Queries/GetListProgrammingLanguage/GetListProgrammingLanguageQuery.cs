@@ -12,7 +12,7 @@ namespace Kodlama.io.Devs.Application.Features.ProgrammingLanguages.Queries.GetL
     public class GetListProgrammingLanguageQuery:IRequest<ProgrammingLanguageListModel>,ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
-        public string[] Roles => new[] { nameof(GetListProgrammingLanguageQuery};
+        public string[] Roles => new[] { nameof(GetListProgrammingLanguageQuery)};
 
         public class GetListProgrammingLanguageQueryHandler : IRequestHandler<GetListProgrammingLanguageQuery, ProgrammingLanguageListModel>
         {
