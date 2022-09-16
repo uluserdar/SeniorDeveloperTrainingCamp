@@ -274,6 +274,53 @@ namespace Kodlama.io.Devs.Application.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Kodlama.io.Devs.Domain.Entities.SocialMediaDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("SocialMediaType")
+                        .HasColumnType("int")
+                        .HasColumnName("SocialMediaType");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Url");
+
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("int")
+                        .HasColumnName("UserProfileId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserProfileId");
+
+                    b.ToTable("SocialMediaDetails", (string)null);
+                });
+
+            modelBuilder.Entity("Kodlama.io.Devs.Domain.Entities.UserProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserProfiles", (string)null);
+                });
+
             modelBuilder.Entity("Core.Security.Entities.RefreshToken", b =>
                 {
                     b.HasOne("Core.Security.Entities.User", "User")
@@ -315,6 +362,28 @@ namespace Kodlama.io.Devs.Application.Migrations
                     b.Navigation("ProgrammingLanguage");
                 });
 
+            modelBuilder.Entity("Kodlama.io.Devs.Domain.Entities.SocialMediaDetail", b =>
+                {
+                    b.HasOne("Kodlama.io.Devs.Domain.Entities.UserProfile", "UserProfile")
+                        .WithMany("SocialMediaDetails")
+                        .HasForeignKey("UserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserProfile");
+                });
+
+            modelBuilder.Entity("Kodlama.io.Devs.Domain.Entities.UserProfile", b =>
+                {
+                    b.HasOne("Core.Security.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Core.Security.Entities.OperationClaim", b =>
                 {
                     b.Navigation("UserOperationClaims");
@@ -330,6 +399,11 @@ namespace Kodlama.io.Devs.Application.Migrations
             modelBuilder.Entity("Kodlama.io.Devs.Domain.Entities.ProgrammingLanguage", b =>
                 {
                     b.Navigation("FrameworkTechnologies");
+                });
+
+            modelBuilder.Entity("Kodlama.io.Devs.Domain.Entities.UserProfile", b =>
+                {
+                    b.Navigation("SocialMediaDetails");
                 });
 #pragma warning restore 612, 618
         }

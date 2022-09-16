@@ -14,6 +14,8 @@ namespace Kodlama.io.Devs.Application.Contexts
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<SocialMediaDetail> SocialMediaDetails { get; set; }
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
@@ -88,6 +90,24 @@ namespace Kodlama.io.Devs.Application.Contexts
                 rt.Property(p => p.ReplacedByToken).HasColumnName("ReplacedByToken");
                 rt.Property(p => p.ReasonRevoked).HasColumnName("ReasonRevoked");
                 rt.HasOne(p => p.User);
+            });
+
+            modelBuilder.Entity<UserProfile>(up=>{
+                up.ToTable("UserProfiles");
+                up.HasKey(k => k.Id);
+                up.Property(p => p.UserId).HasColumnName("UserId");
+                up.HasOne(p => p.User);
+                up.HasMany(p => p.SocialMediaDetails);
+            });
+
+            modelBuilder.Entity<SocialMediaDetail>(sd =>
+            {
+                sd.ToTable("SocialMediaDetails");
+                sd.HasKey(k => k.Id);
+                sd.Property(p => p.UserProfileId).HasColumnName("UserProfileId");
+                sd.Property(p => p.SocialMediaType).HasColumnName("SocialMediaType");
+                sd.Property(p => p.Url).HasColumnName("Url");
+                sd.HasOne(p => p.UserProfile);
             });
 
             ProgrammingLanguage[] programmingLanguageSeeds = { new(1, "C#"), new(2, "Java"), new(3, "Pyton"), new(4, "Php") };
