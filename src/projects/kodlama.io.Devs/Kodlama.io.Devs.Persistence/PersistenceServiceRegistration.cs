@@ -21,7 +21,6 @@ namespace Kodlama.io.Devs.Application
             services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
             services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
             services.AddScoped<IUserProfileRepository, UserProfileRepository>();
-            services.AddScoped<ISocialMediaDetailRepository, SocialMediaDetailRepository>();
 
             return services;
         }
